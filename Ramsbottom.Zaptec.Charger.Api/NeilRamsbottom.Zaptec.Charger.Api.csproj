@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>Neil Ramsbottom</Authors>
+    <Company />
+    <Product>Zaptec Charger API Wrapper</Product>
+    <Description>This is a wrapper I made for the Zaptec Pro charger I have installed in my garage.</Description>
+    <PackageVersion>1.0.0.0-alpha</PackageVersion>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Text.Json" Version="4.7.2" />
+  </ItemGroup>
+
+</Project>
