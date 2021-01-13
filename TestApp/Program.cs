@@ -1,7 +1,10 @@
 ﻿using System;
+using System.IO;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using NeilRamsbottom.Zaptec.Charger.Api;
+using NeilRamsbottom.Zaptec.Charger.Api.Models;
 
 namespace TestApp
 {
@@ -31,8 +34,21 @@ namespace TestApp
                 return;
             }
 
-            var chargerState = await authService.GetChargerState("your-id-here");
+            var chargerId = "f262795a-e1a9-4797-adbc-4b17cb6db7ad";
+            /*
+            var chargerState = await authService.GetChargerState(chargerId);
 
+            foreach (var item in chargerState)
+            {
+                Console.WriteLine(item.ChargerId);
+                Console.WriteLine(item.StateId);
+                Console.WriteLine(item.Timestamp);
+                Console.WriteLine(item.Value);
+                Console.WriteLine();
+            }
+            */
+
+            var chargingHistory = await authService.GetZaptecChargingSessionsAsync(chargerId);
 
 
         }

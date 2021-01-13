@@ -73,6 +73,26 @@ namespace NeilRamsbottom.Zaptec.Charger.Api
             }
         }
 
+        public async Task<ZaptecPagedData<ZaptecSessionListModel>> GetZaptecChargingSessionsAsync(string chargerId)
+        {
+            var request = new HttpRequestMessage(HttpMethod.Get, $"/api/chargehistory?options.chargerId={chargerId}");
+            AppendAuthorizationHeader(request);
+            var response = await _http.SendAsync(request);
+
+            if (response.IsSuccessStatusCode)
+            {
+                using (var responseBodyStream = await response.Content.ReadAsStreamAsync())
+                {
+                    return await JsonSerializer.DeserializeAsync<ZaptecPagedData<ZaptecSessionListModel>>(responseBodyStream);
+                }
+            }
+            else
+            {
+                throw new ZaptecApiException("Failed charging session data.");
+            }
+
+        }
+
         private void AppendAuthorizationHeader(HttpRequestMessage request)
         {
             request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(
