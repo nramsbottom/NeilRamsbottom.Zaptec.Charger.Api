@@ -73,9 +73,16 @@ namespace NeilRamsbottom.Zaptec.Charger.Api
             }
         }
 
-        public async Task<ZaptecPagedData<ZaptecSessionListModel>> GetZaptecChargingSessionsAsync(string chargerId)
+        public async Task<ZaptecPagedData<ZaptecSessionListModel>> GetZaptecChargingSessionsAsync(string chargerId, DateTime? fromDate = null)
         {
-            var request = new HttpRequestMessage(HttpMethod.Get, $"/api/chargehistory?options.chargerId={chargerId}");
+            var url = $"/api/chargehistory?options.chargerId={chargerId}";
+
+            if (fromDate != null)
+            {
+                url += $"&options.from={fromDate.Value.ToString("s")}";
+            }
+
+            var request = new HttpRequestMessage(HttpMethod.Get, url);
             AppendAuthorizationHeader(request);
             var response = await _http.SendAsync(request);
 
