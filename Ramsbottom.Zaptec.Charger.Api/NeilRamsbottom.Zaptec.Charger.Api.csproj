@@ -6,7 +6,7 @@
     <Company />
     <Product>Zaptec Charger API Wrapper</Product>
     <Description>This is a wrapper I made for the Zaptec Pro charger I have installed in my garage.</Description>
-    <PackageVersion>1.0.0.0</PackageVersion>
+    <PackageVersion>1.0.1.0</PackageVersion>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/nramsbottom/NeilRamsbottom.Zaptec.Charger.Api</PackageProjectUrl>
     <AssemblyVersion>1.0.1.0</AssemblyVersion>
